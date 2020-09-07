@@ -135,13 +135,14 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Database\carrent.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="CarRent.bak" />
+    <Content Include="Database\CarRent.bak" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -153,6 +154,16 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Upload\MVC_0afa7145-ff6b-42d9-b82c-5725b6281b8f.jpg" />
+    <Content Include="Upload\MVC_25e028d0-6933-4637-ad9f-a6c17a7fd768.jpg" />
+    <Content Include="Upload\MVC_2707f011-ddf6-4ed5-8f82-872c3f3b1af1.jpg" />
+    <Content Include="Upload\MVC_38a19576-e07d-44a6-8e61-813fc6b889b6.jpg" />
+    <Content Include="Upload\MVC_4262aca8-ff10-4e91-8b07-1c3de9914915.jpg" />
+    <Content Include="Upload\MVC_5628bd90-bdf8-4afd-a2ba-9bd6df1d1f44.jpg" />
+    <Content Include="Upload\MVC_963256af-2748-460f-89b2-b0cf845ba875.jpg" />
+    <Content Include="Upload\MVC_9dce3cb9-7495-4e5d-9467-47fdb120a5be.jpg" />
+    <Content Include="Upload\MVC_a19610b2-d668-4b98-bdf1-2af9088a72ed.jpg" />
+    <Content Include="Upload\MVC_bb14885f-a600-48f1-b11d-5ab7abe6c35b.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -173,7 +184,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
