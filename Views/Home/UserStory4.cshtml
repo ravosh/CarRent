@@ -1,0 +1,31 @@
+﻿@model CarRent.Models.userstory3
+
+@{
+    ViewBag.Title = "UserStory4";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form enctype="multipart/form-data" action="@Url.Action("UserStory4","Home")" method="post">
+    <fieldset>
+
+        @if (TempData["MSG"] != null)
+        {
+            <div class="alert alert-info alert-dismissable" style="text-align: center;">
+                <button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button>
+                <strong>@TempData["MSG"]</strong>
+            </div>
+        }
+
+        <legend>UserStory4 Remove Car</legend>
+
+        <label for="carname">Car Name:</label>
+
+        @Html.DropDownListFor(model => model.carid, ViewBag.carlist as SelectList,
+        new { @required = "required", @class = "form-control form-control-primary" })
+        <br><br>
+
+
+     
+        <input type="submit" value="Submit">
+    </fieldset>
+</form>

@@ -1,0 +1,60 @@
+﻿@model CarRent.Models.carinfo
+@{
+    ViewBag.Title = "addcarinfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@*<h2>Add Car Info</h2>*@
+
+
+
+<form enctype="multipart/form-data" action="@Url.Action("addcarinfos","Home")" method="post">
+    <fieldset>
+
+        @if (TempData["MSG"] != null)
+        {
+            <div class="alert alert-info alert-dismissable" style="text-align: center;">
+                <button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button>
+                <strong>@TempData["MSG"]</strong>
+            </div>
+        }
+
+        <legend>Enter Car Details</legend>
+
+        <label for="carname">Car Name:</label>
+        @Html.TextBoxFor(m => m.carname, new { @class = "form-control form-control-primary" })<br><br>
+
+
+        <label for="carimage">Car Image:</label>
+        <input type="file" id="carimage" name="carimage"><br><br>
+        <img src="" id="carimageid" style="width:100px;" /><br /><br />
+
+
+        <label for="status">Status:</label>
+        @Html.DropDownListFor(m => m.status,
+        new List<SelectListItem>
+        {
+            new SelectListItem {Text = "Available", Value = "Available"},
+            new SelectListItem {Text = "Rented", Value = "Rented"}
+        }
+        , new { @class = "form-control form-control-primary" })<br><br>
+
+        <input type="submit" value="Submit">
+    </fieldset>
+</form>
+<script src="/Scripts/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+
+    //Using FileReader to convert the image as dataurl.
+    $(document).ready(function () {
+        $("#carimage").change(function () {
+            var file = document.getElementById("carimage").files[0];
+            var readImg = new FileReader();
+            readImg.readAsDataURL(file);
+            readImg.onload = function (e) {
+                $('#carimageid').attr('src', e.target.result).fadeIn();
+            }
+        });
+    });
+</script>

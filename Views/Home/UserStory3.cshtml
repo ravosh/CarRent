@@ -1,0 +1,39 @@
+﻿@model CarRent.Models.userstory3
+
+@{
+    ViewBag.Title = "UserStory3";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form enctype="multipart/form-data" action="@Url.Action("UserStory3","Home")" method="post">
+    <fieldset>
+
+        @if (TempData["MSG"] != null)
+        {
+            <div class="alert alert-info alert-dismissable" style="text-align: center;">
+                <button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button>
+                <strong>@TempData["MSG"]</strong>
+            </div>
+            <div class="alert alert-info alert-dismissable" style="text-align: center;">
+                <button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button>
+                <strong>Time: @TempData["time"] hr(s) and Rate: Rs.@TempData["rate"]</strong>
+            </div>
+        }
+
+        <legend>Enter UserStory3 Details</legend>
+
+        <label for="carname">Car Number:</label>
+
+        @Html.TextBoxFor(m => m.carid, new { @required = "required", @class = "form-control form-control-primary" })
+        <br><br>
+
+
+        <label for="carname">Returned:</label>
+
+        @Html.CheckBoxFor(m => m.chkstatus, new { @required = "required" })
+        <br><br>
+
+
+        <input type="submit" value="Submit">
+    </fieldset>
+</form>

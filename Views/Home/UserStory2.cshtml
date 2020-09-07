@@ -1,0 +1,34 @@
+﻿@model CarRent.Models.userstory2
+@{
+    ViewBag.Title = "Contact";
+}
+
+
+<form enctype="multipart/form-data" action="@Url.Action("UserStory2","Home")" method="post">
+    <fieldset>
+
+        @if (TempData["MSG"] != null)
+        {
+            <div class="alert alert-info alert-dismissable" style="text-align: center;">
+                <button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button>
+                <strong>@TempData["MSG"]</strong>
+            </div>
+        }
+
+        <legend>Enter UserStory2 Details</legend>
+
+        <label for="carname">Car Number:</label>
+
+        @Html.TextBoxFor(m => m.carid, new { @required = "required", @class = "form-control form-control-primary" })
+        <br><br>
+
+
+        <label for="carname">Customer Name:</label>
+
+        @Html.TextBoxFor(m => m.Customername, new { @required = "required", @class = "form-control form-control-primary" })
+        <br><br>
+
+
+        <input type="submit" value="Submit">
+    </fieldset>
+</form>

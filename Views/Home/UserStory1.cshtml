@@ -1,0 +1,57 @@
+﻿@model CarRent.Models.userstory1
+@{
+    ViewBag.Title = "About";
+}
+
+
+<form enctype="multipart/form-data" action="@Url.Action("UserStory1","Home")" method="post">
+    <fieldset>
+
+        @if (TempData["MSG"] != null)
+        {
+            <div class="alert alert-info alert-dismissable" style="text-align: center;">
+                <button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button>
+                <strong>@TempData["MSG"]</strong>
+            </div>
+        }
+
+        <legend>Enter UserStory1 Details</legend>
+
+        <label for="carname">Car Name:</label>
+
+        @Html.DropDownListFor(model => model.carid, ViewBag.carlist as SelectList,
+        new { @required = "required", @class = "form-control form-control-primary" })
+        <br><br>
+
+
+        <label for="carimage">Car Image:</label>
+        <img src="" id="carimageid" style="width:100px;" /><br /><br />
+
+
+        <label for="status">Hourly Rate:</label>
+        @Html.TextBoxFor(m => m.hourlyrate, new { @required = "required", @class = "form-control form-control-primary",@type="number" })<br><br>
+
+        <input type="submit" value="Submit">
+    </fieldset>
+</form>
+<script src="/Scripts/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+    $('#carid').change(function () {
+        var url = '/home/carlists/' + $('#carid').val();
+        $.getJSON(url, {}, function (data) {
+            $('#carimageid').attr('src', data).fadeIn();
+        })
+        
+    })
+    //Using FileReader to convert the image as dataurl.
+    //$(document).ready(function () {
+    //    $("#carimage").change(function () {
+    //        var file = document.getElementById("carimage").files[0];
+    //        var readImg = new FileReader();
+    //        readImg.readAsDataURL(file);
+    //        readImg.onload = function (e) {
+    //            $('#carimageid').attr('src', e.target.result).fadeIn();
+    //        }
+    //    });
+    //});
+</script>
