@@ -44,6 +44,7 @@ namespace CarRent.Controllers
         public ActionResult UserStory1(userstory1 model)
         {
             Datalayer dl = new Datalayer();
+
             int i = dl.SP_USERSTORY1_INFO(model);
             if (i > 0)
             {
@@ -192,8 +193,16 @@ namespace CarRent.Controllers
             if (ds.Tables[0].Rows.Count > 0)
             {
                 TempData["MSG"] = ds.Tables[0].Rows[0]["msg"].ToString();
+                if(ds.Tables[1].Rows[0]["howmanyhour"].ToString() != "")
+                {
+
                 TempData["time"] = ds.Tables[1].Rows[0]["howmanyhour"].ToString();
-                TempData["rate"] = ds.Tables[1].Rows[0]["price"].ToString();
+                }
+                if (ds.Tables[1].Rows[0]["price"].ToString() != "")
+                {
+
+                    TempData["rate"] = ds.Tables[1].Rows[0]["price"].ToString();
+                }
                 ModelState.Clear();
             }
             else
@@ -205,7 +214,7 @@ namespace CarRent.Controllers
 
         public ActionResult UserStory4()
         {
-            carlist();
+            carlistss();
             return View();
         }
 
@@ -226,6 +235,21 @@ namespace CarRent.Controllers
                 TempData["MSG"] = "We don't have data related to '"+model.carid+"' car no.!!";
             }
             return RedirectToAction("UserStory4");
+        }
+
+        public void carlistss()
+        {
+            Datalayer dl = new Datalayer();
+            DataSet ds = new DataSet();
+            ds = dl.runQueryDs("select u3.status,ci.CarName,CarId from [dbo].[Tbl_UserStory3] u3 join Tbl_Car_Info ci on ci.Id=u3.CarId");
+
+            List<SelectListItem> lss = new List<SelectListItem>();
+            lss.Add(new SelectListItem { Text = "Select Car", Value = "" });
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                lss.Add(new SelectListItem { Text = dr["carname"].ToString(), Value = dr["CarId"].ToString() });
+            }
+            ViewBag.carlist = new SelectList(lss, "Value", "Text");
         }
     }
 }

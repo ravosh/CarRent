@@ -207,8 +207,8 @@ namespace CarRent.Models
         {
             try
             {
-                string[] pname = { "@Id", "@carid", "@customername" };
-                string[] pvalue = { t.id.ToString(), t.carid.ToString(), t.Customername };
+                string[] pname = { "@Id", "@carid", "@customername","@status" };
+                string[] pvalue = { t.id.ToString(), t.carid.ToString(), t.Customername,t.status };
                 return Ds_Process("SP_USERSTORY2_INFO", pname, pvalue);
             }
             catch (Exception ex)
